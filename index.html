@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      background: rgba(99,99,191,.07);
+
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .input-area {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid rgba(99,99,191,0.25);
+      padding-bottom: 40px;
+      margin-bottom: 40px;
+      width: 100%;
+      max-width: 700px;
+    }
+    textarea {
+      background: white;
+      margin-bottom: 20px;
+      padding: 20px;
+      font-size: 15px;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      border-bottom: 3px solid rgba(99,99,191,0.25);
+      resize: none;
+      flex-shrink: 0;
+    }
+    button {
+      padding: 15px;
+      background: white;
+      border: none;
+      font-size: 17px;
+      border-radius: 12px;
+      cursor: pointer;
+      outline: none;
+      border-bottom: 3px solid rgba(99,99,191,0.25);
+      flex-shrink: 0;
+    }
+    button:hover {
+      background: rgba(99, 99, 191, 0.06);
+    }
+    button:active {
+      background: rgba(99, 99, 191, 0.10);
+    }
+    .info {
+      margin: 20px;
+      color: #6363bf;
+    }
+    .feed {
+      width: 100%;
+      max-width: 700px;
+    }
+    .feed-item {
+      background: white;
+      margin-bottom: 20px;
+      padding: 20px;
+      font-size: 15px;
+      border-radius: 12px;
+      color: black;
+      border-bottom: 3px solid rgba(99,99,191,0.25);
+      white-space: pre;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="info">Open two browser tabs side by side and see the feed updating in real time.</div>
+  <div class="input-area">
+    <textarea rows="6" cols="80" placeholder="Write something to the feed.."></textarea>
+    <button>Send</button>
+  </div>
+  <div class="feed"></div>
+  <script src="script.js"></script>
+</body>
+</html>
