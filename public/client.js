@@ -1,8 +1,14 @@
-// PS! Replace this with your own channel ID
-// If you use this channel ID your app will stop working in the near future
-const CHANNEL_ID = 'T87NVGvnSG3GvNnP';
+// CHANNEL_ID is defined in the index.ejs file
+const drone = new Scaledrone(CHANNEL_ID);
 
-const drone = new ScaleDrone(CHANNEL_ID);
+drone.on('open', error => {
+  if (error) {
+    return console.error(error);
+  }
+  fetch('/auth/' + drone.clientId)
+    .then(response => response.text())
+    .then(jwt => drone.authenticate(jwt));
+});
 
 drone.on('close', event => console.log('Connection was closed', event));
 drone.on('error', error => console.error(error));
@@ -31,7 +37,7 @@ const DOM = {
 
 DOM.submitButton.addEventListener('click', sendMessage);
 
-function sendMessage(event) {
+function sendMessage() {
   const value = DOM.textarea.value;
   if (!value) {
     return;
