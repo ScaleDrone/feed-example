@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const log = require('tracer').colorConsole();
 const url = require('url');
 const {SCALEDRONE_CHANNEL, SCALEDRONE_SECRET, NODE_ENV} = process.env;
+const PORT = process.env.PORT || 1234;
 
 if (!SCALEDRONE_CHANNEL) {
   log.error('Please provide a SCALEDRONE_CHANNEL environmental variable');
@@ -50,10 +51,9 @@ function hasChannelAccess(req) {
   if (NODE_ENV === 'production') {
     return referer.host === 'www.scaledrone.com';
   } else { // local
-    return referer.host === 'localhost:1234';
+    return referer.host === `localhost:${PORT}`;
   }
 }
 
-const PORT = 1234;
 app.listen(PORT);
 log.info(`Server is running on port ${PORT}. Visit http://localhost:${PORT}`);
