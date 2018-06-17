@@ -5,7 +5,7 @@ drone.on('open', error => {
   if (error) {
     return console.error(error);
   }
-  fetch('/auth/' + drone.clientId)
+  fetch('auth/' + drone.clientId)
     .then(response => response.text())
     .then(jwt => drone.authenticate(jwt));
 });
