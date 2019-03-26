@@ -19,7 +19,7 @@ const room = drone.subscribe('feed', {
 
 room.on('history_message', ({data}) => {
   console.log(data);
-  addFeedItemToBottom(data);
+  addFeedItemToTop(data);
 });
 
 room.on('data', data => {
@@ -54,10 +54,6 @@ function sendMessage() {
 
 function addFeedItemToTop(item) {
   DOM.feed.insertBefore(createFeedItem(item), DOM.feed.firstChild);
-}
-
-function addFeedItemToBottom(item) {
-  DOM.feed.append(createFeedItem(item));
 }
 
 function createFeedItem(item) {
